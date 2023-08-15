@@ -88,7 +88,7 @@ class CurlHelper
      *
      * @throws \BadMethodCallException
      */
-    public static function getCurlOptionFromResponse(Response $response, int $option = 0)
+    public static function getCurlOptionFromResponse(Response $response, ?string $url, int $option = 0)
     {
         switch ($option) {
             case 0: // 0 == array of all curl options
@@ -109,6 +109,9 @@ class CurlHelper
             case \CURLPROXY_HTTPS:
             case \CURLINFO_APPCONNECT_TIME:
                 $info = '';
+                break;
+            case \CURLINFO_EFFECTIVE_URL:
+                $info = $url;
                 break;
             case CURLINFO_CERTINFO:
                 $curlInfo = $response->getCurlInfo($option);
