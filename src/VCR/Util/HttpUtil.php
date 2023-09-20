@@ -103,10 +103,10 @@ class HttpUtil
         foreach ($headers as $key => $values) {
             if (\is_array($values)) {
                 foreach ($values as $value) {
-                    $curlHeaders[] = $key.': '.$value;
+                    $curlHeaders[] = $key.': '.$value . "\r\n";
                 }
             } else {
-                $curlHeaders[] = $key.': '.$values;
+                $curlHeaders[] = $key.': '.$values . "\r\n";
             }
         }
 
@@ -122,7 +122,7 @@ class HttpUtil
     {
         return 'HTTP/'.$response->getHttpVersion()
             .' '.$response->getStatusCode()
-            .' '.$response->getStatusMessage();
+            .' '.$response->getStatusMessage() . "\r\n";
     }
 
     /**
