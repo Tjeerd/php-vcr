@@ -500,7 +500,7 @@ class StreamProcessor
      * @return bool Returns TRUE on success or FALSE on failure. If option is not implemented,
      *              FALSE should be returned.
      */
-    public function stream_set_option(int $option, int $arg1, int $arg2): bool
+    public function stream_set_option(int $option, int $arg1, int|null $arg2): bool
     {
         if (false === $this->resource) {
             return false;
